@@ -1,9 +1,11 @@
 function DisplayInformation(props) {
-  console.log(props);
+  console.log(props.cityObject.name);
 
   return (
     <section>
-      {props.cityObject.name !== "" ? (
+      {props.cityObject.name === undefined ? (
+        <h2>Please select an option from the dropdown list.</h2>
+      ) : (
         <>
           <h2>{props.cityObject.name}</h2>
           <ul>
@@ -34,8 +36,6 @@ function DisplayInformation(props) {
             </li>
           </ul>
         </>
-      ) : (
-        <h2>Sorry, No info available</h2>
       )}
     </section>
   );
