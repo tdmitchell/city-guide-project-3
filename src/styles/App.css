@@ -9,7 +9,7 @@ background-color: #282c34;
 
 header {
   /* color: azure; */
-  height: 50vh;
+  height:50vh;
 }
 
 main {
@@ -19,6 +19,10 @@ main {
   /* background-image: url("./../assets/images/alberta-background.jpg");
   background-repeat: no-repeat;
   background-size: contain; */
+}
+
+main p {
+  margin: 20px;
 }
 
 footer {
@@ -31,4 +35,18 @@ footer {
 
   width: 80%;
   margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (min-width: 400px) {
+  header {
+    /* color: azure; */
+    /* height: 50vh; */
+  }
 }

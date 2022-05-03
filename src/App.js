@@ -59,7 +59,9 @@ function App() {
         params: {
           client_id: "E8k2AKw4LSSFulm3bhOPXuC6-MWfhsGIsamLaFBJAEo",
           query: city,
-          per_page: 3,
+          per_page: 12,
+          orientation: "landscape",
+          collections: "nature",
         },
       }).then((res) => {
         const responseData = res.data.results;
