@@ -1,0 +1,29 @@
+element {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+select {
+    width: 100%;
+    margin: 25px auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 12px;
+
+    
+}
+
+button:hover {
+    background-color: bisque;
+    cursor: pointer;
+
+}

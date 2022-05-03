@@ -1,3 +1,5 @@
+import "./../styles/DisplayPhoto.css";
+
 function DisplayPhotos(props) {
   return (
     <section>
@@ -5,7 +7,7 @@ function DisplayPhotos(props) {
         <h2>No photos found!</h2>
       ) : (
         <>
-          <h2>Photos!</h2>
+          <h2>Photos</h2>
           {/* {console.log("kkk", props.photos)} */}
           <div className="photos">
             {props.photos.map((photo) => {

@@ -1,3 +1,4 @@
+import "./../styles/CitySelectionForm.css";
 import { useState } from "react";
 
 function CitySelectionForm(props) {
@@ -13,7 +14,7 @@ function CitySelectionForm(props) {
   };
 
   return (
-    <form onSubmit={(e) => props.getInfo(e, userChoice)}>
+    <form onSubmit={(e) => props.getInfo(e, userChoice)} className="wrapper">
       <label htmlFor="cityName">Choose city:</label>
       {/* <label>Choose city:</label> */}
       <select

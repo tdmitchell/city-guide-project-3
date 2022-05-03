@@ -1,0 +1,33 @@
+body {
+background-color: #282c34;
+}
+
+.App {
+  text-align: center;  
+}
+
+header {
+  color: azure;
+  height: 50vh;
+}
+
+main {
+  /* height: 45vh; */
+  /* background-color: black; */
+  color: beige;
+  /* background-image: url("./../assets/images/alberta-background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain; */
+}
+
+footer {
+  /* height: 10vh; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: 0 auto;
+}

@@ -1,9 +1,10 @@
+import "./../styles/DisplayInformation.css";
 function DisplayInformation(props) {
   console.log(props.cityObject.name);
 
   return (
     <section>
-      {props.cityObject.name === undefined ? (
+      {props.cityObject.name === "" ? (
         <h2>Please select an option from the dropdown list.</h2>
       ) : (
         <>

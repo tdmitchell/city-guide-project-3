@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -59,7 +59,7 @@ function App() {
         params: {
           client_id: "E8k2AKw4LSSFulm3bhOPXuC6-MWfhsGIsamLaFBJAEo",
           query: city,
-          per_page: 30,
+          per_page: 3,
         },
       }).then((res) => {
         const responseData = res.data.results;
@@ -97,21 +97,32 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header wrapper">
         <h1>City Information Guide</h1>
-        <h2>Coming Soon!</h2>
-        <h3>Developed by Theo Mitchell</h3>
+        {/* <h2>Coming Soon!</h2> */}
 
         <CitySelectionForm getInfo={getInfo} />
       </header>
 
       {/* <DisplayInformation cityObject={cityInfo} /> */}
-      {city ? (
-        <main>
-          <DisplayInformation cityObject={selectedInfo} />
-          <DisplayPhotos photos={cityPhotos} />
-        </main>
-      ) : null}
+      <main>
+        {/* <h2>Select a city</h2> */}
+        {city ? (
+          <>
+            <DisplayInformation cityObject={selectedInfo} />
+            <DisplayPhotos photos={cityPhotos} />
+          </>
+        ) : null}
+      </main>
+
+      <footer>
+        <h3>Developed by Theo Mitchell</h3>
+        <p>For juno Bootcamp Project 3</p>
+        <p>
+          Thanks for Ninja API and Unsplash API, and jameswheeler at pixabay for
+          providing the data for this learning project.
+        </p>
+      </footer>
     </div>
   );
 }
