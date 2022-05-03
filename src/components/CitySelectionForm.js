@@ -14,6 +14,8 @@ function CitySelectionForm(props) {
 
   return (
     <form onSubmit={(e) => props.getInfo(e, userChoice)}>
+      <label htmlFor="cityName">Choose city:</label>
+      {/* <label>Choose city:</label> */}
       <select
         value={userChoice}
         id="cityName"

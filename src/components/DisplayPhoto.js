@@ -6,14 +6,12 @@ function DisplayPhotos(props) {
       ) : (
         <>
           <h2>Photos!</h2>
+          {/* {console.log("kkk", props.photos)} */}
           <div className="photos">
             {props.photos.map((photo) => {
               return (
-                <div className="photo-container" key={props.photo.id}>
-                  <img
-                    src={props.photo.urls.small}
-                    alt={props.photo.alt_description}
-                  />
+                <div className="photo-container" key={photo.id}>
+                  <img src={photo.urls.small} alt={photo.alt_description} />
                 </div>
               );
             })}

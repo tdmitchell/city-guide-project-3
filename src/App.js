@@ -18,8 +18,8 @@ function App() {
   // };
 
   //States
-  const [city, setCity] = useState("Rio de Janeiro");
-  // const [city, setCity] = useState("");
+  // const [city, setCity] = useState("Rio de Janeiro");
+  const [city, setCity] = useState("");
   const [selectedInfo, setSelectedInfo] = useState({
     // name: "Toront",
     // country: "Canada1",
@@ -32,43 +32,68 @@ function App() {
 
   //API call
   useEffect(() => {
-    axios({
-      url: `https://api.api-ninjas.com/v1/city?name=${city}`,
-      method: "GET",
-      headers: {
-        "X-Api-Key": "OMPD0sHj09N5XJV/prIM3Q==zKLddhyIL406cdHa",
-      },
-    }).then((res) => {
-      // console.log("Res", res);
-      const responseData = res.data[0];
+    //1st Call: Ninjas City API
 
-      console.log("responseData", responseData);
+    if (city) {
+      axios({
+        url: `https://api.api-ninjas.com/v1/city?name=${city}`,
+        method: "GET",
+        headers: {
+          "X-Api-Key": "OMPD0sHj09N5XJV/prIM3Q==zKLddhyIL406cdHa",
+        },
+      }).then((res) => {
+        // console.log("Res", res);
+        const responseData = res.data[0];
 
-      setSelectedInfo(responseData);
-      // setCity("Sao Paulo"); //           //It changes city state and gets new data from the API
-    });
+        console.log("responseData", responseData);
+
+        setSelectedInfo(responseData);
+        // setCity("Sao Paulo"); //           //It changes city state and gets new data from the API
+      });
+
+      //2nd Call: Unsplash API
+      axios({
+        url: "https://api.unsplash.com/search/photos",
+        method: "GET",
+        dataResponse: "json",
+        params: {
+          client_id: "E8k2AKw4LSSFulm3bhOPXuC6-MWfhsGIsamLaFBJAEo",
+          query: city,
+          per_page: 30,
+        },
+      }).then((res) => {
+        const responseData = res.data.results;
+
+        setCityPhotos(responseData);
+
+        console.log("res", res);
+        console.log("res.data.results", res.data.results);
+        // console.log(withOrientation);
+        // console.log(allPhotos); //RETURNS AN EMPTY ARRAY, WHY ????????
+      });
+    }
   }, [city]);
 
   // Get info from Form
   const getInfo = (e, cityName) => {
     e.preventDefault();
-    console.log("city From getInfo", cityName);
+    // console.log("city From getInfo", cityName);
     setCity(cityName);
-    let newCityInfo = selectedInfo;
-    getPhotos(e, cityName);
-    return newCityInfo;
+    // let newCityInfo = selectedInfo;
+    // getPhotos(e, cityName);
+    // return newCityInfo;
 
     // setSelectedInfo(apiCityInformation);
     // console.log("apiCityInformation", apiCityInformation);
   };
 
-  const getPhotos = (e, cityName) => {
-    e.preventDefault();
-    console.log("city From getPhoto", cityName);
-    // setCity(cityName);
-    let selectedPhotos = cityPhotos;
-    return selectedPhotos;
-  };
+  // const getPhotos = (e, cityName) => {
+  //   // e.preventDefault();
+  //   console.log("city From getPhoto", cityName);
+  //   setCity(cityName);
+  //   let selectedPhotos = cityPhotos;
+  //   return selectedPhotos;
+  // };
 
   return (
     <div className="App">
@@ -78,10 +103,15 @@ function App() {
         <h3>Developed by Theo Mitchell</h3>
 
         <CitySelectionForm getInfo={getInfo} />
-        {/* <DisplayInformation cityObject={cityInfo} /> */}
-        <DisplayInformation cityObject={selectedInfo} />
-        <DisplayPhotos photos={cityPhotos} />
       </header>
+
+      {/* <DisplayInformation cityObject={cityInfo} /> */}
+      {city ? (
+        <main>
+          <DisplayInformation cityObject={selectedInfo} />
+          <DisplayPhotos photos={cityPhotos} />
+        </main>
+      ) : null}
     </div>
   );
 }
