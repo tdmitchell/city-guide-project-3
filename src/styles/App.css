@@ -4,17 +4,18 @@ background-color: #282c34;
 
 .App {
   text-align: center;  
+  color: beige;
 }
 
 header {
-  color: azure;
+  /* color: azure; */
   height: 50vh;
 }
 
 main {
   /* height: 45vh; */
   /* background-color: black; */
-  color: beige;
+  
   /* background-image: url("./../assets/images/alberta-background.jpg");
   background-repeat: no-repeat;
   background-size: contain; */

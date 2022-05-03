@@ -112,10 +112,12 @@ function App() {
             <DisplayInformation cityObject={selectedInfo} />
             <DisplayPhotos photos={cityPhotos} />
           </>
-        ) : null}
+        ) : (
+          <p>A site to get to know some important Canadian cities.</p>
+        )}
       </main>
 
-      <footer>
+      <footer className="wrapper">
         <h3>Developed by Theo Mitchell</h3>
         <p>For juno Bootcamp Project 3</p>
         <p>
