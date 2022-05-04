@@ -1,7 +1,7 @@
 import "./../styles/DisplayInformation.css";
-function DisplayInformation(props) {
-  console.log(props.cityObject.name);
 
+function DisplayInformation(props) {
+  //Display
   return (
     <section>
       {props.cityObject.name === "" ? (

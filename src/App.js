@@ -7,33 +7,14 @@ import DisplayInformation from "./components/DisplayInformation";
 import DisplayPhotos from "./components/DisplayPhoto";
 
 function App() {
-  //Hardcoded to test Display
-  // const cityInfo = {
-  //   name: "Toronto",
-  //   country: "Canada",
-  //   population: 200000,
-  //   latitude: 51.05,
-  //   longitude: -114.067,
-  //   is_capital: false,
-  // };
-
   //States
-  // const [city, setCity] = useState("Rio de Janeiro");
   const [city, setCity] = useState("");
-  const [selectedInfo, setSelectedInfo] = useState({
-    // name: "Toront",
-    // country: "Canada1",
-    // population: 200000,
-    // latitude: 51.05,
-    // longitude: -114.067,
-    // is_capital: false,
-  });
+  const [selectedInfo, setSelectedInfo] = useState({});
   const [cityPhotos, setCityPhotos] = useState([]);
 
   //API call
   useEffect(() => {
     //1st Call: Ninjas City API
-
     if (city) {
       axios({
         url: `https://api.api-ninjas.com/v1/city?name=${city}`,
@@ -42,13 +23,8 @@ function App() {
           "X-Api-Key": "OMPD0sHj09N5XJV/prIM3Q==zKLddhyIL406cdHa",
         },
       }).then((res) => {
-        // console.log("Res", res);
         const responseData = res.data[0];
-
-        console.log("responseData", responseData);
-
         setSelectedInfo(responseData);
-        // setCity("Sao Paulo"); //           //It changes city state and gets new data from the API
       });
 
       //2nd Call: Unsplash API
@@ -61,17 +37,11 @@ function App() {
           query: city,
           per_page: 12,
           orientation: "landscape",
-          collections: "nature",
+          collections: "sightseeing",
         },
       }).then((res) => {
         const responseData = res.data.results;
-
         setCityPhotos(responseData);
-
-        console.log("res", res);
-        console.log("res.data.results", res.data.results);
-        // console.log(withOrientation);
-        // console.log(allPhotos); //RETURNS AN EMPTY ARRAY, WHY ????????
       });
     }
   }, [city]);
@@ -79,36 +49,18 @@ function App() {
   // Get info from Form
   const getInfo = (e, cityName) => {
     e.preventDefault();
-    // console.log("city From getInfo", cityName);
     setCity(cityName);
-    // let newCityInfo = selectedInfo;
-    // getPhotos(e, cityName);
-    // return newCityInfo;
-
-    // setSelectedInfo(apiCityInformation);
-    // console.log("apiCityInformation", apiCityInformation);
   };
 
-  // const getPhotos = (e, cityName) => {
-  //   // e.preventDefault();
-  //   console.log("city From getPhoto", cityName);
-  //   setCity(cityName);
-  //   let selectedPhotos = cityPhotos;
-  //   return selectedPhotos;
-  // };
-
+  //Display
   return (
     <div className="App">
       <header className="App-header wrapper">
         <h1>City Information Guide</h1>
-        {/* <h2>Coming Soon!</h2> */}
-
         <CitySelectionForm getInfo={getInfo} />
       </header>
 
-      {/* <DisplayInformation cityObject={cityInfo} /> */}
       <main>
-        {/* <h2>Select a city</h2> */}
         {city ? (
           <>
             <DisplayInformation cityObject={selectedInfo} />
@@ -120,11 +72,12 @@ function App() {
       </main>
 
       <footer className="wrapper">
-        <h3>Developed by Theo Mitchell</h3>
-        <p>For juno Bootcamp Project 3</p>
+        <h3>Developed by Theo Mitchell - 2022</h3>
+        <p>During Web Development Bootcamp at Juno College of Technology</p>
+
         <p>
-          Thanks for Ninja API and Unsplash API, and jameswheeler at pixabay for
-          providing the data for this learning project.
+          Courtesy of Ninja API and Unsplash API. They Provided the data for
+          this learning project.
         </p>
       </footer>
     </div>

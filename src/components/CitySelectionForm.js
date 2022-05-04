@@ -3,16 +3,13 @@ import { useState } from "react";
 
 function CitySelectionForm(props) {
   const [userChoice, setUserChoice] = useState("placeholder");
-  // console.log("Inicial Users Choice State:", userChoice); //RETURNS placeholder  - OK
 
-  //Get the User's choice value
+  //Get the User's choice value and update UserChoice State
   const handleUserChoice = (e) => {
-    console.log("City from Form:", e.target.value);
-    //Update userChoice
     setUserChoice(e.target.value);
-    // console.log("Users Choice State:", userChoice); //Why 1 behind???
   };
 
+  //Display
   return (
     <form onSubmit={(e) => props.getInfo(e, userChoice)} className="wrapper">
       <label htmlFor="cityName">Choose city:</label>

@@ -8,7 +8,6 @@ function DisplayPhotos(props) {
       ) : (
         <>
           <h2>Photos</h2>
-          {/* {console.log("kkk", props.photos)} */}
           <div className="photos wrapper">
             {props.photos.map((photo) => {
               return (

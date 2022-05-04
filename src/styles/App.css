@@ -8,31 +8,20 @@ background-color: #282c34;
 }
 
 header {
-  /* color: azure; */
   height:50vh;
-}
-
-main {
-  /* height: 45vh; */
-  /* background-color: black; */
-  
-  /* background-image: url("./../assets/images/alberta-background.jpg");
-  background-repeat: no-repeat;
-  background-size: contain; */
 }
 
 main p {
   margin: 20px;
 }
 
-footer {
-  /* height: 10vh; */
+footer p {
+  margin-top: 0;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-
   width: 80%;
   margin: 0 auto;
 }
@@ -43,10 +32,20 @@ footer {
   margin-right: auto;
 }
 
+@media (min-width: 300px) {
+  header {
+    height: 50vh;
+  }
+}
 
 @media (min-width: 400px) {
   header {
-    /* color: azure; */
-    /* height: 50vh; */
+    height: 45vh;
+  }
+}
+
+@media (min-width: 600px) {
+  header {
+    height: 40vh;
   }
 }

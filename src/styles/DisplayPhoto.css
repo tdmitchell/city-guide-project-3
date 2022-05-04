@@ -12,8 +12,7 @@ img {
     }
 
     .photo-container {
-        flex-basis: 45%;
-        
+        flex-basis: 45%;        
         margin: 10px;
     }
 
